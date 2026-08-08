@@ -407,14 +407,15 @@ body {
   margin-bottom: 1.2rem;
 }
 
-.project-header h3 a.project-title-link {
-  color: var(--text-main);
+.project-title-link {
+  color: #FFFFFF;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
-.project-header h3 a.project-title-link:hover {
-  color: var(--accent-hover);
+.project-title-link:hover {
+  color: #60A5FA;
+  text-decoration: underline;
 }
 
 .project-tech {
