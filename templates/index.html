@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -35,7 +36,8 @@
       </blockquote>
       
       <div class="hero-btns">
-        <a href="https://github.com/lkishan2008-bit" target="_blank" rel="noopener noreferrer" class="btn"><i class="fab fa-github"></i> GitHub</a>
+        <button id="download-cv-btn" class="btn btn-primary"><i class="fas fa-file-pdf"></i> Generate CV</button>
+        <a href="https://github.com/lkishan2008-bit" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
         <a href="https://www.linkedin.com/in/kishan-l-114aa4377" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://www.instagram.com/kishan.l765" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-instagram"></i> Instagram</a>
         <a href="https://wa.me/919945347632?text=Hi%20Kishan,%20I%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
@@ -271,6 +273,44 @@
       </div>
     </div>
   </section>
+
+  <!-- Hidden Resume Template for PDF Generation -->
+  <div id="resume-template" style="display: none; padding: 40px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #111; background: #fff; max-width: 800px; margin: 0 auto;">
+    <div style="border-bottom: 2px solid #2563eb; padding-bottom: 15px; margin-bottom: 20px;">
+      <h1 style="margin: 0; font-size: 28px; color: #1e293b;">Kishan</h1>
+      <p style="margin: 5px 0 0; font-size: 16px; color: #2563eb; font-weight: bold;">Full-Stack Developer | AI & Machine Learning Student</p>
+      <p style="margin: 5px 0 0; font-size: 13px; color: #475569;">
+        Email: lkishan2008@gmail.com | Phone/WhatsApp: +91 9945347632 | GitHub: <a href="https://github.com/lkishan2008-bit" style="color:#2563eb;">github.com/lkishan2008-bit</a>
+      </p>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <h3 style="margin: 0 0 8px; font-size: 16px; color: #1e293b; text-transform: uppercase; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Technical Skills</h3>
+      <p style="margin: 0; font-size: 13px; color: #334155; line-height: 1.6;">
+        <strong>Languages:</strong> C/C++, Python, JavaScript, HTML5, CSS3<br>
+        <strong>Frameworks & Tools:</strong> React, Node.js, Git, VS Code, Tailwind CSS<br>
+        <strong>Cloud & Backend:</strong> Google Cloud Platform (GCP), Twilio, REST APIs
+      </p>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <h3 style="margin: 0 0 8px; font-size: 16px; color: #1e293b; text-transform: uppercase; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Featured Projects</h3>
+      <div style="margin-bottom: 10px;">
+        <p style="margin: 0; font-size: 14px; font-weight: bold; color: #0f172a;">Zero Hunger Supply-Demand Prototype</p>
+        <p style="margin: 2px 0 0; font-size: 13px; color: #475569;">Developed a predictive web prototype during a national hackathon to manage food distribution efficiently using full-stack web technologies.</p>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <p style="margin: 0; font-size: 14px; font-weight: bold; color: #0f172a;">Interactive Developer Portfolio</p>
+        <p style="margin: 2px 0 0; font-size: 13px; color: #475569;">Built a dynamic portfolio with real-time terminal interaction, live project category filtering, and instant client-side PDF resume compilation.</p>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <h3 style="margin: 0 0 8px; font-size: 16px; color: #1e293b; text-transform: uppercase; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">Education</h3>
+      <p style="margin: 0; font-size: 14px; font-weight: bold; color: #0f172a;">Bachelor of Engineering (B.E.) — AI & Machine Learning</p>
+      <p style="margin: 2px 0 0; font-size: 13px; color: #475569;">VTU Scheme</p>
+    </div>
+  </div>
 
   <footer>
     <p>© 2026 Kishan. Rebuilt for high engineering performance.</p>

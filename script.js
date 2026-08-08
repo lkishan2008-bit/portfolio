@@ -96,4 +96,27 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // 4. Automatic PDF Resume Generation
+  const downloadBtn = document.getElementById('download-cv-btn');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      const template = document.getElementById('resume-template');
+      if (!template) return;
+
+      template.style.display = 'block';
+
+      const options = {
+        margin:       0.4,
+        filename:     'Kishan_Resume.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+
+      html2pdf().set(options).from(template).save().then(() => {
+        template.style.display = 'none';
+      });
+    });
+  }
 });
