@@ -191,12 +191,74 @@ body {
   padding: 1.5rem;
   font-family: var(--font-mono);
   font-size: 0.88rem;
+  max-height: 350px;
+  overflow-y: auto;
 }
 
 .prompt { color: var(--accent-blue); }
 .output-text { color: #E2E8F0; margin-left: 1rem; }
 .tree-item { color: var(--text-muted); margin-left: 1rem; }
 .status-active { color: #10B981; margin-left: 1rem; font-weight: bold; }
+
+/* Terminal Input Line */
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+#terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #60A5FA;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  flex: 1;
+  caret-color: var(--accent-blue);
+}
+
+.terminal-cmd-entry {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Project Filter Tabs */
+.project-filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.filter-btn {
+  background-color: #0F172A;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 0.45rem 1.1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  color: var(--text-main);
+  border-color: var(--accent-blue);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #3B82F6, #2563EB);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.project-card.hide {
+  display: none !important;
+}
 
 /* Section & Cards General Styling */
 .section {

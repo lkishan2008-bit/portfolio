@@ -53,20 +53,25 @@
         <span class="dot green"></span>
         <span class="terminal-title">kishan@dev:~</span>
       </div>
-      <div class="terminal-body">
-        <p><span class="prompt">kishan@dev:~$</span> whoami</p>
-        <p class="output-text">Full-Stack Developer</p>
-        <p class="output-text">CSE Student</p>
-        <br>
-        <p><span class="prompt">kishan@dev:~$</span> ls skills/</p>
-        <p class="tree-item">├── React & Node.js</p>
-        <p class="tree-item">├── Python & Gemini API</p>
-        <p class="tree-item">├── OpenCV & Vision</p>
-        <p class="tree-item">├── C / C++</p>
-        <p class="tree-item">└── SQL & MongoDB</p>
-        <br>
-        <p><span class="prompt">kishan@dev:~$</span> status</p>
-        <p class="status-active">Status: Building 🚀</p>
+      <div class="terminal-body" id="terminal-body">
+        <div id="terminal-output">
+          <p><span class="prompt">kishan@dev:~$</span> whoami</p>
+          <p class="output-text">Full-Stack Developer | CSE Student</p>
+          <br>
+          <p><span class="prompt">kishan@dev:~$</span> ls skills/</p>
+          <p class="tree-item">├── React & Node.js</p>
+          <p class="tree-item">├── Python & Gemini API</p>
+          <p class="tree-item">├── OpenCV & Vision</p>
+          <p class="tree-item">├── C / C++</p>
+          <p class="tree-item">└── SQL & MongoDB</p>
+          <br>
+          <p><span class="prompt">kishan@dev:~$</span> status</p>
+          <p class="status-active">Status: Building 🚀 (Type 'help' for commands)</p>
+        </div>
+        <div class="terminal-input-line">
+          <span class="prompt">kishan@dev:~$</span>
+          <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" placeholder="type command (help, whoami, skills, projects, contact)..." />
+        </div>
       </div>
     </div>
   </section>
@@ -159,8 +164,18 @@
   <!-- Projects Section -->
   <section id="projects" class="section">
     <h2 class="section-title">Featured Work</h2>
+
+    <!-- Project Filter Buttons -->
+    <div class="project-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="full-stack">Full-Stack</button>
+      <button class="filter-btn" data-filter="ai-ml">AI/ML</button>
+      <button class="filter-btn" data-filter="web-dev">Web Dev</button>
+    </div>
+
     <div class="projects-grid">
-      <div class="card project-card">
+      <!-- Project Card 1 -->
+      <div class="card project-card" data-category="ai-ml full-stack">
         <div class="project-header">
           <h3>
             <a href="https://hackathon-olive-five.vercel.app" target="_blank" rel="noopener noreferrer" class="project-title-link">
@@ -182,6 +197,59 @@
         <div class="project-impact">
           <div class="impact-item"><i class="fas fa-arrow-down"></i> Hazard Detection Delay</div>
           <div class="impact-item"><i class="fas fa-arrow-up"></i> Navigation Independence</div>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/lkishan2008-bit" target="_blank" rel="noopener noreferrer" class="btn-link-outline"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <!-- Project Card 2 -->
+      <div class="card project-card" data-category="full-stack web-dev">
+        <div class="project-header">
+          <h3>
+            <a href="https://github.com/lkishan2008-bit" target="_blank" rel="noopener noreferrer" class="project-title-link">
+              <span>DevPortfolio Studio</span>
+            </a>
+          </h3>
+          <span class="project-badge">Featured</span>
+        </div>
+        <p class="project-description">
+          Modern high-performance developer portfolio built with glassmorphism, conic charts, and real-time interactive terminal emulation.
+        </p>
+        <div class="project-tech">
+          <span>HTML5</span>
+          <span>CSS3</span>
+          <span>JavaScript</span>
+          <span>Node.js</span>
+        </div>
+        <div class="project-impact">
+          <div class="impact-item"><i class="fas fa-bolt"></i> High Engineering Performance</div>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/lkishan2008-bit" target="_blank" rel="noopener noreferrer" class="btn-link-outline"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <!-- Project Card 3 -->
+      <div class="card project-card" data-category="ai-ml web-dev">
+        <div class="project-header">
+          <h3>
+            <a href="https://github.com/lkishan2008-bit" target="_blank" rel="noopener noreferrer" class="project-title-link">
+              <span>Algorithmic Visualizer</span>
+            </a>
+          </h3>
+          <span class="project-badge">Open Source</span>
+        </div>
+        <p class="project-description">
+          Interactive Data Structures and Graph Algorithm visualizer built for analyzing search, sorting, and pathfinding complexity.
+        </p>
+        <div class="project-tech">
+          <span>C++</span>
+          <span>Python</span>
+          <span>Web Canvas</span>
+        </div>
+        <div class="project-impact">
+          <div class="impact-item"><i class="fas fa-check-circle"></i> Interactive Execution</div>
         </div>
         <div class="project-links">
           <a href="https://github.com/lkishan2008-bit" target="_blank" rel="noopener noreferrer" class="btn-link-outline"><i class="fab fa-github"></i> GitHub</a>
