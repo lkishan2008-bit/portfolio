@@ -410,6 +410,9 @@ body {
 .project-title-link {
   color: #FFFFFF;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
   transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
