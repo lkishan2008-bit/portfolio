@@ -407,18 +407,32 @@ body {
   margin-bottom: 1.2rem;
 }
 
+.project-header h3 {
+  position: relative;
+  z-index: 10;
+}
+
 .project-title-link {
-  color: #FFFFFF;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  transition: color 0.2s ease, text-decoration 0.2s ease;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 10 !important;
+  transition: color 0.2s ease !important;
 }
 
 .project-title-link:hover {
-  color: #60A5FA;
-  text-decoration: underline;
+  color: #60A5FA !important;
+  text-decoration: underline !important;
+}
+
+.project-title-link i {
+  font-size: 0.85rem !important;
+  pointer-events: none !important;
 }
 
 .project-tech {
