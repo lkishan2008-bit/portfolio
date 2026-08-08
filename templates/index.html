@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kishan | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- 1. Navbar -->
+  <nav class="navbar">
+    <div class="logo">Kishan<span>.dev</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#dsa">DSA Stats</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- 2. Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="badge">Available for Opportunities</div>
+      <h1>Hi, I'm <span class="highlight">Kishan</span></h1>
+      <p class="hero-subtitle">CSE Student · Full-Stack Developer · Problem Solver</p>
+      <blockquote class="hero-quote">
+        "I build scalable web applications and explore systems, algorithms, and emerging technologies."
+      </blockquote>
+      
+      <div class="hero-btns">
+        <a href="https://hackathon-olive-five.vercel.app" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-rocket"></i> Launch Live Assistant</a>
+        <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="mailto:your-email@gmail.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Email Me</a>
+      </div>
+      
+      <a href="#about" class="scroll-down"><i class="fas fa-arrow-down"></i> Explore my work</a>
+    </div>
+
+    <!-- Developer Terminal Component -->
+    <div class="terminal-card">
+      <div class="terminal-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="terminal-title">kishan@dev:~</span>
+      </div>
+      <div class="terminal-body">
+        <p><span class="prompt">kishan@dev:~$</span> whoami</p>
+        <p class="output-text">Full-Stack Developer</p>
+        <p class="output-text">CSE Student</p>
+        <br>
+        <p><span class="prompt">kishan@dev:~$</span> ls skills/</p>
+        <p class="tree-item">├── React & Node.js</p>
+        <p class="tree-item">├── Python & Gemini API</p>
+        <p class="tree-item">├── OpenCV & Vision</p>
+        <p class="tree-item">├── C / C++</p>
+        <p class="tree-item">└── SQL & MongoDB</p>
+        <br>
+        <p><span class="prompt">kishan@dev:~$</span> status</p>
+        <p class="status-active">Status: Building 🚀</p>
+        <br>
+        <a href="https://hackathon-olive-five.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-terminal-launch"><i class="fas fa-play"></i> Launch Assistant</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2 class="section-title">About Me</h2>
+    <div class="card about-card">
+      <p>I am a Computer Science & Engineering student specializing in full-stack web development and AI integration. Passionate about architecture, algorithm design, and shipping real-world applications that solve complex problems.</p>
+    </div>
+  </section>
+
+  <!-- Technical Proficiency (Single Circle Chart) -->
+  <section id="skills" class="section">
+    <h2 class="section-title">Technical Proficiency</h2>
+    <div class="card single-circle-card">
+      
+      <!-- Conic Gradient Ring -->
+      <div class="multi-color-circle">
+        <div class="circle-inner">
+          <span class="circle-label">Languages</span>
+        </div>
+      </div>
+
+      <!-- Language Legend & Percentages -->
+      <div class="language-legend">
+        <div class="legend-item">
+          <span class="color-dot" style="background-color: #60A5FA;"></span>
+          <span class="lang-name">C / C++</span>
+          <span class="lang-percent">85%</span>
+        </div>
+        <div class="legend-item">
+          <span class="color-dot" style="background-color: #A855F7;"></span>
+          <span class="lang-name">Python</span>
+          <span class="lang-percent">75%</span>
+        </div>
+        <div class="legend-item">
+          <span class="color-dot" style="background-color: #EC4899;"></span>
+          <span class="lang-name">HTML</span>
+          <span class="lang-percent">25%</span>
+        </div>
+        <div class="legend-item">
+          <span class="color-dot" style="background-color: #06B6D4;"></span>
+          <span class="lang-name">CSS</span>
+          <span class="lang-percent">10%</span>
+        </div>
+        <div class="legend-item">
+          <span class="color-dot" style="background-color: #F7DF1E;"></span>
+          <span class="lang-name">JavaScript</span>
+          <span class="lang-percent">0%</span>
+        </div>
+        <div class="legend-item">
+          <span class="color-dot" style="background-color: #F97316;"></span>
+          <span class="lang-name">SQL</span>
+          <span class="lang-percent">0%</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DSA Stats Section -->
+  <section id="dsa" class="section">
+    <h2 class="section-title">DSA Journey</h2>
+    <div class="card dsa-compact-box">
+      <div class="dsa-header">
+        <div class="dsa-title-group">
+          <i class="fas fa-code-branch dsa-icon"></i>
+          <h3>Data Structures & Algorithms</h3>
+        </div>
+        <span class="dsa-status-badge">Status: Ready to Start</span>
+      </div>
+      <div class="dsa-metrics-row">
+        <div class="dsa-metric-item">
+          <span class="dsa-metric-val">0</span>
+          <span class="dsa-metric-lbl">Problems Solved</span>
+        </div>
+        <div class="dsa-metric-item">
+          <span class="dsa-metric-val">0</span>
+          <span class="dsa-metric-lbl">Concepts</span>
+        </div>
+        <div class="dsa-metric-item">
+          <span class="dsa-metric-val">0%</span>
+          <span class="dsa-metric-lbl">Mastery</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <h2 class="section-title">Featured Work</h2>
+    <div class="projects-grid">
+      <div class="card project-card">
+        <div class="project-header">
+          <h3>VisionAid</h3>
+          <span class="project-badge">Hackathon Winner</span>
+        </div>
+        <p class="project-description">
+          Autonomous spatial mapping & AI navigation assistant built for accessibility, giving visually impaired individuals real-time environmental awareness.
+        </p>
+        <div class="project-tech-container">
+          <div class="project-tech">
+            <span>Python</span>
+            <span>OpenCV</span>
+            <span>Gemini API</span>
+            <span>Web Speech</span>
+          </div>
+          <a href="https://hackathon-olive-five.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-live-deploy"><i class="fas fa-external-link-alt"></i> View Live Deployment</a>
+        </div>
+        <div class="project-impact">
+          <div class="impact-item"><i class="fas fa-arrow-down"></i> Hazard Detection Delay</div>
+          <div class="impact-item"><i class="fas fa-arrow-up"></i> Navigation Independence</div>
+        </div>
+        <div class="project-links">
+          <a href="https://hackathon-olive-five.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fas fa-rocket"></i> Launch Live Assistant</a>
+          <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="btn-link-outline"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="card contact-card">
+      <p>Interested in collaborating or hiring? Reach out directly via email or LinkedIn.</p>
+      <a href="mailto:your-email@gmail.com" class="btn"><i class="fas fa-paper-plane"></i> Send Message</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Kishan. Rebuilt for high engineering performance.</p>
+  </footer>
+
+</body>
+</html>
