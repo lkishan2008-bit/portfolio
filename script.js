@@ -119,4 +119,108 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // 5. Technical Proficiency Interactive Donut Chart
+  const skillsData = {
+    languages: {
+      title: 'Languages',
+      labels: ['C / C++', 'Python', 'HTML / CSS', 'JavaScript', 'SQL'],
+      values: [85, 75, 80, 70, 65],
+      colors: ['#60A5FA', '#A855F7', '#EC4899', '#F7DF1E', '#F97316']
+    },
+    frameworks: {
+      title: 'Frameworks & Tools',
+      labels: ['React', 'Node.js', 'OpenCV', 'Git & GitHub', 'VS Code'],
+      values: [80, 75, 70, 85, 90],
+      colors: ['#06B6D4', '#10B981', '#3B82F6', '#8B5CF6', '#F59E0B']
+    },
+    cloud: {
+      title: 'Cloud & Databases',
+      labels: ['MongoDB', 'MySQL', 'Gemini API', 'Vercel', 'Firebase'],
+      values: [75, 80, 85, 70, 65],
+      colors: ['#10B981', '#3B82F6', '#8B5CF6', '#EC4899', '#F97316']
+    }
+  };
+
+  const canvas = document.getElementById('skillsChart');
+  if (canvas && typeof Chart !== 'undefined') {
+    const ctx = canvas.getContext('2d');
+    let activeCategory = 'languages';
+
+    const centerTitle = document.getElementById('center-title');
+    const centerVal = document.getElementById('center-val');
+
+    function setCenterText(title, valueText) {
+      if (centerTitle) centerTitle.textContent = title;
+      if (centerVal) centerVal.textContent = valueText;
+    }
+
+    const skillsChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: skillsData.languages.labels,
+        datasets: [{
+          data: skillsData.languages.values,
+          backgroundColor: skillsData.languages.colors,
+          borderWidth: 2,
+          borderColor: '#111A2B',
+          hoverOffset: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '72%',
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            enabled: true,
+            backgroundColor: '#0F172A',
+            titleColor: '#F8FAFC',
+            bodyColor: '#60A5FA',
+            borderColor: '#1E293B',
+            borderWidth: 1,
+            padding: 10,
+            callbacks: {
+              label: function(context) {
+                return ` ${context.label}: ${context.raw}%`;
+              }
+            }
+          }
+        },
+        onHover: (event, activeElements) => {
+          if (activeElements && activeElements.length > 0) {
+            const index = activeElements[0].index;
+            const skillName = skillsChart.data.labels[index];
+            const percent = skillsChart.data.datasets[0].data[index];
+            setCenterText(skillName, `${percent}%`);
+          } else {
+            setCenterText(skillsData[activeCategory].title, 'Hover arc');
+          }
+        }
+      }
+    });
+
+    const skillTabs = document.querySelectorAll('.skill-tab');
+    skillTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        skillTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const catKey = tab.getAttribute('data-category');
+        if (skillsData[catKey]) {
+          activeCategory = catKey;
+          const catData = skillsData[catKey];
+          skillsChart.data.labels = catData.labels;
+          skillsChart.data.datasets[0].data = catData.values;
+          skillsChart.data.datasets[0].backgroundColor = catData.colors;
+          skillsChart.update();
+          setCenterText(catData.title, 'Hover arc');
+        }
+      });
+    });
+  }
 });
+

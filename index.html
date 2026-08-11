@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
@@ -88,52 +89,27 @@
     </div>
   </section>
 
-  <!-- Technical Proficiency (Single Circle Chart) -->
+  <!-- Technical Proficiency Section -->
   <section id="skills" class="section">
     <h2 class="section-title">Technical Proficiency</h2>
-    <div class="card single-circle-card">
-      
-      <!-- Conic Gradient Ring -->
-      <div class="multi-color-circle">
-        <div class="circle-inner">
-          <span class="circle-label">Languages</span>
-        </div>
+    <div class="card single-circle-card skills-card">
+      <!-- Category Switcher Tabs -->
+      <div class="skills-tabs">
+        <button class="skill-tab active" data-category="languages">Languages</button>
+        <button class="skill-tab" data-category="frameworks">Frameworks &amp; Tools</button>
+        <button class="skill-tab" data-category="cloud">Cloud &amp; Databases</button>
       </div>
 
-      <!-- Language Legend & Percentages -->
-      <div class="language-legend">
-        <div class="legend-item">
-          <span class="color-dot" style="background-color: #60A5FA;"></span>
-          <span class="lang-name">C / C++</span>
-          <span class="lang-percent">85%</span>
-        </div>
-        <div class="legend-item">
-          <span class="color-dot" style="background-color: #A855F7;"></span>
-          <span class="lang-name">Python</span>
-          <span class="lang-percent">75%</span>
-        </div>
-        <div class="legend-item">
-          <span class="color-dot" style="background-color: #EC4899;"></span>
-          <span class="lang-name">HTML</span>
-          <span class="lang-percent">25%</span>
-        </div>
-        <div class="legend-item">
-          <span class="color-dot" style="background-color: #06B6D4;"></span>
-          <span class="lang-name">CSS</span>
-          <span class="lang-percent">10%</span>
-        </div>
-        <div class="legend-item">
-          <span class="color-dot" style="background-color: #F7DF1E;"></span>
-          <span class="lang-name">JavaScript</span>
-          <span class="lang-percent">0%</span>
-        </div>
-        <div class="legend-item">
-          <span class="color-dot" style="background-color: #F97316;"></span>
-          <span class="lang-name">SQL</span>
-          <span class="lang-percent">0%</span>
+      <!-- Donut Chart Container -->
+      <div class="chart-wrapper">
+        <div class="chart-container">
+          <canvas id="skillsChart"></canvas>
+          <div class="chart-center-info" id="chart-center-info">
+            <span class="center-title" id="center-title">Languages</span>
+            <span class="center-val" id="center-val">Hover arc</span>
+          </div>
         </div>
       </div>
-
     </div>
   </section>
 
