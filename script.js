@@ -120,60 +120,94 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Technical Proficiency Interactive Donut Chart
-  const skillsData = {
-    languages: {
-      title: 'Languages',
-      labels: ['C / C++', 'Python', 'HTML / CSS', 'JavaScript', 'SQL'],
-      values: [85, 75, 80, 70, 65],
-      colors: ['#60A5FA', '#A855F7', '#EC4899', '#F7DF1E', '#F97316']
-    },
-    frameworks: {
-      title: 'Frameworks & Tools',
-      labels: ['React', 'Node.js', 'OpenCV', 'Git & GitHub', 'VS Code'],
-      values: [80, 75, 70, 85, 90],
-      colors: ['#06B6D4', '#10B981', '#3B82F6', '#8B5CF6', '#F59E0B']
-    },
-    cloud: {
-      title: 'Cloud & Databases',
-      labels: ['MongoDB', 'MySQL', 'Gemini API', 'Vercel', 'Firebase'],
-      values: [75, 80, 85, 70, 65],
-      colors: ['#10B981', '#3B82F6', '#8B5CF6', '#EC4899', '#F97316']
-    }
-  };
-
+  // 5. Technical Proficiency Static Pie Chart
   const canvas = document.getElementById('skillsChart');
   if (canvas && typeof Chart !== 'undefined') {
     const ctx = canvas.getContext('2d');
-    let activeCategory = 'languages';
 
-    const centerTitle = document.getElementById('center-title');
-    const centerVal = document.getElementById('center-val');
+    const sliceLabelsPlugin = {
+      id: 'sliceLabelsPlugin',
+      afterDraw(chart) {
+        const { ctx } = chart;
+        ctx.save();
+        chart.data.datasets.forEach((dataset, datasetIndex) => {
+          const meta = chart.getDatasetMeta(datasetIndex);
+          meta.data.forEach((element, index) => {
+            const val = dataset.data[index];
+            if (val === 0) return; // Skip 0% slices inside pie canvas
 
-    function setCenterText(title, valueText) {
-      if (centerTitle) centerTitle.textContent = title;
-      if (centerVal) centerVal.textContent = valueText;
-    }
+            const label = chart.data.labels[index];
+            const { x, y, startAngle, endAngle, outerRadius } = element;
+            const middleAngle = startAngle + (endAngle - startAngle) / 2;
 
-    const skillsChart = new Chart(ctx, {
-      type: 'doughnut',
+            const textRadius = outerRadius * 0.62;
+            const textX = x + Math.cos(middleAngle) * textRadius;
+            const textY = y + Math.sin(middleAngle) * textRadius;
+
+            ctx.font = '700 12px "Inter", sans-serif';
+            ctx.fillStyle = '#FFFFFF';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+            ctx.shadowBlur = 4;
+            ctx.fillText(`${label} — ${val}%`, textX, textY);
+          });
+        });
+        ctx.restore();
+      }
+    };
+
+    new Chart(ctx, {
+      type: 'pie',
+      plugins: [sliceLabelsPlugin],
       data: {
-        labels: skillsData.languages.labels,
+        labels: ['C/C++', 'Python', 'HTML/CSS', 'JavaScript', 'SQL'],
         datasets: [{
-          data: skillsData.languages.values,
-          backgroundColor: skillsData.languages.colors,
+          data: [85, 75, 25, 0, 0],
+          backgroundColor: ['#60A5FA', '#A855F7', '#EF4444', '#F7DF1E', '#F97316'],
           borderWidth: 2,
-          borderColor: '#111A2B',
-          hoverOffset: 8
+          borderColor: '#111A2B'
         }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        cutout: '72%',
+        cutout: 0,
         plugins: {
           legend: {
-            display: false
+            display: true,
+            position: 'bottom',
+            labels: {
+              color: '#94A3B8',
+              font: {
+                family: 'Inter',
+                size: 13,
+                weight: '500'
+              },
+              padding: 16,
+              usePointStyle: true,
+              pointStyle: 'circle',
+              generateLabels: function(chart) {
+                const data = chart.data;
+                if (data.labels.length && data.datasets.length) {
+                  return data.labels.map((label, i) => {
+                    const meta = chart.getDatasetMeta(0);
+                    const style = meta.controller.getStyle(i);
+                    const val = data.datasets[0].data[i];
+                    return {
+                      text: `${label} — ${val}%`,
+                      fillStyle: style.backgroundColor,
+                      strokeStyle: style.borderColor,
+                      lineWidth: style.borderWidth,
+                      hidden: isNaN(data.datasets[0].data[i]) || meta.data[i].hidden,
+                      index: i
+                    };
+                  });
+                }
+                return [];
+              }
+            }
           },
           tooltip: {
             enabled: true,
@@ -189,37 +223,8 @@ document.addEventListener('DOMContentLoaded', () => {
               }
             }
           }
-        },
-        onHover: (event, activeElements) => {
-          if (activeElements && activeElements.length > 0) {
-            const index = activeElements[0].index;
-            const skillName = skillsChart.data.labels[index];
-            const percent = skillsChart.data.datasets[0].data[index];
-            setCenterText(skillName, `${percent}%`);
-          } else {
-            setCenterText(skillsData[activeCategory].title, 'Hover arc');
-          }
         }
       }
-    });
-
-    const skillTabs = document.querySelectorAll('.skill-tab');
-    skillTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        skillTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        const catKey = tab.getAttribute('data-category');
-        if (skillsData[catKey]) {
-          activeCategory = catKey;
-          const catData = skillsData[catKey];
-          skillsChart.data.labels = catData.labels;
-          skillsChart.data.datasets[0].data = catData.values;
-          skillsChart.data.datasets[0].backgroundColor = catData.colors;
-          skillsChart.update();
-          setCenterText(catData.title, 'Hover arc');
-        }
-      });
     });
   }
 });
