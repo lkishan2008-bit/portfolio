@@ -62,17 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
   - <b style="color:#60A5FA;">whoami</b>   : Developer profile summary<br>
   - <b style="color:#60A5FA;">skills</b>   : Technical languages & frameworks<br>
   - <b style="color:#60A5FA;">projects</b> : View featured work<br>
-  - <b style="color:#60A5FA;">contact</b>  : Reach out via email, social & WhatsApp<br>
+  - <b style="color:#60A5FA;">contact</b>  : Reach out via email, social, X & WhatsApp<br>
+  - <b style="color:#60A5FA;">socials</b>  : Direct social media profiles<br>
   - <b style="color:#60A5FA;">clear</b>    : Clear terminal screen<br>
   - <b style="color:#60A5FA;">help</b>     : Show this menu</p>`;
             break;
 
           case 'whoami':
-            responseHTML = `<p class="output-text">Kishan - CSE Student & Full-Stack Developer specializing in web architectures, algorithms, and AI integration.</p>`;
+            responseHTML = `<p class="output-text">Kishan - CSE Student & Full-Stack Developer specializing in web architectures, algorithms, and AI integration. Find me on X @kishanL5s.</p>`;
             break;
 
           case 'skills':
-            responseHTML = `<p class="tree-item">├── Languages : C/C++ (85%), Python (75%), HTML (25%), CSS (10%)<br>├── Core Dev  : React, Node.js, REST APIs, SQL, MongoDB<br>└── Vision/AI : OpenCV, Gemini API, Web Speech API</p>`;
+            responseHTML = `<p class="tree-item">├── Languages : C (80%), Python (75%), HTML (15%), CSS (10%)<br>├── Core Dev  : React, Node.js, REST APIs, SQL, MongoDB<br>└── Vision/AI : OpenCV, Gemini API, Web Speech API</p>`;
             break;
 
           case 'projects':
@@ -80,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
 
           case 'contact':
-            responseHTML = `<p class="output-text">📧 Mail: kishanl52pro.765@gmail.com<br>🔗 LinkedIn: linkedin.com/in/kishan-l-114aa4377<br>📸 Instagram: instagram.com/kishan.l765<br>💬 WhatsApp: +91 9945347632</p>`;
+          case 'socials':
+            responseHTML = `<p class="output-text">📧 Mail: kishanl52pro.765@gmail.com<br>𝕏 Twitter: x.com/kishanL5s<br>🔗 LinkedIn: linkedin.com/in/kishan-l-114aa4377<br>📸 Instagram: instagram.com/kishan.l765<br>💬 WhatsApp: +91 9945347632</p>`;
             break;
 
           case 'clear':
@@ -257,6 +259,31 @@ document.addEventListener('DOMContentLoaded', () => {
       console.warn('LeetCode API fetch failed, retaining default fallback values:', err);
     }
   }
-  fetchLeetCodeStats();
+  // 7. Navbar Active Scroll-Spy Tracking
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-links a');
+
+  function updateNavActiveState() {
+    let currentSectionId = '';
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 140;
+      const sectionHeight = section.offsetHeight;
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        currentSectionId = section.getAttribute('id');
+      }
+    });
+
+    navItems.forEach(link => {
+      link.classList.remove('active');
+      if (currentSectionId && link.getAttribute('href') === `#${currentSectionId}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateNavActiveState);
+  updateNavActiveState();
 });
 

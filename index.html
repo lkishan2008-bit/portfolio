@@ -43,6 +43,7 @@
         <button id="download-cv-btn" class="btn btn-primary"><i class="fas fa-file-pdf"></i> Generate CV</button>
         <div class="social-icons-group">
           <a href="https://github.com/lkishan2008-bit" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://x.com/kishanL5s" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" class="social-icon-btn" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
           <a href="https://www.linkedin.com/in/kishan-l-114aa4377" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://www.instagram.com/kishan.l765" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://wa.me/919945347632?text=Hi%20Kishan,%20I%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -245,12 +246,30 @@
   <section id="contact" class="section">
     <h2 class="section-title">Get In Touch</h2>
     <div class="card contact-card">
-      <p>Interested in collaborating or hiring? Reach out directly via email or social profiles.</p>
-      <div style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 1rem;">
-        <a href="mailto:kishanl52pro.765@gmail.com" class="btn"><i class="fas fa-paper-plane"></i> Mail</a>
-        <a href="https://www.linkedin.com/in/kishan-l-114aa4377" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://www.instagram.com/kishan.l765" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://wa.me/919945347632?text=Hi%20Kishan,%20I%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <p>Interested in collaborating or hiring? Send a message directly or connect via social profiles.</p>
+      
+      <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+        <input type="hidden" name="subject" value="New Portfolio Contact Form Submission" />
+        
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" required class="form-input" />
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email Address" required class="form-input" />
+        </div>
+        <div class="form-group">
+          <textarea name="message" rows="4" placeholder="Your Message" required class="form-input"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+
+      <div class="contact-social-links" style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+        <a href="mailto:kishanl52pro.765@gmail.com" class="btn btn-outline" title="Email"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://x.com/kishanL5s" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" class="btn btn-outline" title="Twitter / X"><i class="fab fa-x-twitter"></i> X / Twitter</a>
+        <a href="https://www.linkedin.com/in/kishan-l-114aa4377" target="_blank" rel="noopener noreferrer" class="btn btn-outline" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://www.instagram.com/kishan.l765" target="_blank" rel="noopener noreferrer" class="btn btn-outline" title="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://wa.me/919945347632?text=Hi%20Kishan,%20I%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="btn btn-outline" title="WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       </div>
     </div>
   </section>
