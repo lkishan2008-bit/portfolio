@@ -197,26 +197,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Real-Time LeetCode API Integration
+  // 6. Real-Time LeetCode API Integration (Alfa API)
   async function fetchLeetCodeStats() {
     try {
-      const response = await fetch('https://leetcode-stats-api.herokuapp.com/kishan_765');
+      const response = await fetch('https://alfa-leetcode-api.onrender.com/kishan_765/solved');
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
-      if (data && data.status === 'success') {
+      if (data) {
         const totalElem = document.getElementById('totalSolved');
         const easyElem = document.getElementById('easySolved');
         const mediumElem = document.getElementById('mediumSolved');
         const hardElem = document.getElementById('hardSolved');
         const acceptanceElem = document.getElementById('acceptanceRate');
 
-        if (totalElem) totalElem.textContent = data.totalSolved ?? '0';
-        if (easyElem) easyElem.textContent = data.easySolved ?? '0';
-        if (mediumElem) mediumElem.textContent = data.mediumSolved ?? '0';
-        if (hardElem) hardElem.textContent = data.hardSolved ?? '0';
+        const total = data.solvedProblem ?? data.totalSolved;
+        if (totalElem && total !== undefined) totalElem.textContent = total;
+        if (easyElem && data.easySolved !== undefined) easyElem.textContent = data.easySolved;
+        if (mediumElem && data.mediumSolved !== undefined) mediumElem.textContent = data.mediumSolved;
+        if (hardElem && data.hardSolved !== undefined) hardElem.textContent = data.hardSolved;
+
         if (acceptanceElem) {
           const rate = data.acceptanceRate;
-          acceptanceElem.textContent = typeof rate === 'number' ? `${rate}%` : (rate || '0%');
+          if (rate !== undefined) {
+            acceptanceElem.textContent = typeof rate === 'number' ? `${rate}%` : (rate || '0%');
+          }
         }
       }
     } catch (err) {
