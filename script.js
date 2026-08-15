@@ -134,13 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
           const meta = chart.getDatasetMeta(datasetIndex);
           meta.data.forEach((element, index) => {
             const val = dataset.data[index];
-            if (val === 0) return; // Skip 0% slices inside pie canvas
+            if (!val || val === 0) return; // Skip 0% slices
 
             const label = chart.data.labels[index];
             const { x, y, startAngle, endAngle, outerRadius } = element;
             const middleAngle = startAngle + (endAngle - startAngle) / 2;
 
-            const textRadius = outerRadius * 0.62;
+            const textRadius = outerRadius * 0.58;
             const textX = x + Math.cos(middleAngle) * textRadius;
             const textY = y + Math.sin(middleAngle) * textRadius;
 
@@ -149,8 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
 
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
-            ctx.shadowBlur = 4;
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+            ctx.shadowBlur = 5;
             ctx.fillText(`${label} — ${val}%`, textX, textY);
           });
         });
@@ -162,10 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
       type: 'pie',
       plugins: [sliceLabelsPlugin],
       data: {
-        labels: ['C/C++', 'Python', 'HTML/CSS', 'JavaScript', 'SQL'],
+        labels: ['C', 'Python', 'HTML', 'CSS'],
         datasets: [{
-          data: [85, 75, 25, 0, 0],
-          backgroundColor: ['#60A5FA', '#A855F7', '#EF4444', '#F7DF1E', '#F97316'],
+          data: [80, 75, 15, 10],
+          backgroundColor: ['#3B82F6', '#10B981', '#F59E0B', '#EF4444'],
           borderWidth: 2,
           borderColor: '#111A2B'
         }]
@@ -176,38 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cutout: 0,
         plugins: {
           legend: {
-            display: true,
-            position: 'bottom',
-            labels: {
-              color: '#94A3B8',
-              font: {
-                family: 'Inter',
-                size: 13,
-                weight: '500'
-              },
-              padding: 16,
-              usePointStyle: true,
-              pointStyle: 'circle',
-              generateLabels: function(chart) {
-                const data = chart.data;
-                if (data.labels.length && data.datasets.length) {
-                  return data.labels.map((label, i) => {
-                    const meta = chart.getDatasetMeta(0);
-                    const style = meta.controller.getStyle(i);
-                    const val = data.datasets[0].data[i];
-                    return {
-                      text: `${label} — ${val}%`,
-                      fillStyle: style.backgroundColor,
-                      strokeStyle: style.borderColor,
-                      lineWidth: style.borderWidth,
-                      hidden: isNaN(data.datasets[0].data[i]) || meta.data[i].hidden,
-                      index: i
-                    };
-                  });
-                }
-                return [];
-              }
-            }
+            display: false
           },
           tooltip: {
             enabled: true,
@@ -227,5 +196,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 6. Real-Time LeetCode API Integration
+  async function fetchLeetCodeStats() {
+    try {
+      const response = await fetch('https://leetcode-stats-api.herokuapp.com/kishan_765');
+      if (!response.ok) throw new Error('Network response was not ok');
+      const data = await response.json();
+      if (data && data.status === 'success') {
+        const totalElem = document.getElementById('totalSolved');
+        const easyElem = document.getElementById('easySolved');
+        const mediumElem = document.getElementById('mediumSolved');
+        const hardElem = document.getElementById('hardSolved');
+        const acceptanceElem = document.getElementById('acceptanceRate');
+
+        if (totalElem) totalElem.textContent = data.totalSolved ?? '0';
+        if (easyElem) easyElem.textContent = data.easySolved ?? '0';
+        if (mediumElem) mediumElem.textContent = data.mediumSolved ?? '0';
+        if (hardElem) hardElem.textContent = data.hardSolved ?? '0';
+        if (acceptanceElem) {
+          const rate = data.acceptanceRate;
+          acceptanceElem.textContent = typeof rate === 'number' ? `${rate}%` : (rate || '0%');
+        }
+      }
+    } catch (err) {
+      console.warn('LeetCode API fetch failed, retaining default fallback values:', err);
+    }
+  }
+  fetchLeetCodeStats();
 });
 
