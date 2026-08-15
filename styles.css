@@ -17,6 +17,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   background: radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.12), transparent 35%), var(--bg-color);
   color: var(--text-main);
@@ -555,4 +560,145 @@ footer {
   border-top: 1px solid var(--border-color);
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+/* Mobile Nav Toggle Component */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.nav-toggle:hover {
+  color: var(--accent-hover);
+}
+
+/* Comprehensive Mobile Viewport Responsive Rules (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Navbar Optimization */
+  .navbar {
+    padding: 1rem 5%;
+  }
+
+  .logo {
+    font-size: 1.15rem;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(13, 20, 36, 0.98);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 1.5rem 5%;
+    gap: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Hero Section & Terminal Overflow Fix */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 5%;
+    gap: 2rem;
+    min-height: auto;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-quote {
+    font-size: 0.95rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .terminal-card {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .terminal-body {
+    padding: 1rem;
+    font-size: 0.82rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  /* Sections & Cards Polish */
+  .section {
+    padding: 2.5rem 5%;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card, .skills-card, .about-card, .dsa-compact-box, .contact-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.25rem 1rem;
+  }
+
+  .chart-container {
+    width: 100%;
+    max-width: 280px;
+    height: 280px;
+  }
+
+  .dsa-metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 0.85rem;
+  }
+
+  .dsa-metric-val {
+    font-size: 1.2rem;
+  }
+
+  .dsa-metric-lbl {
+    font-size: 0.75rem;
+  }
+
+  .project-filters {
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .contact-card {
+    padding: 2rem 1rem;
+  }
 }
